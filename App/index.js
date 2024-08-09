@@ -1,4 +1,5 @@
 import React from "react";
-import Options from "./screens/options";
+// import Options from "./screens/Options";
+import Home from "./screens/Home";
 
-export default () => <Options />; //exporting the optios page //self closing view;
+export default () => <Home />; //exporting the optios page //self closing view;
