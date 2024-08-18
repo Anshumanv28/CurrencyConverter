@@ -1,6 +1,16 @@
 // import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { View, StyleSheet, StatusBar, Image, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  StatusBar,
+  Image,
+  Dimensions,
+  Text,
+} from "react-native";
+import { format } from "date-fns";
+import { ConversionInput } from "../components/ConversionInput";
+import { Button } from "../components/Button";
 
 import colors from "../constants/colors";
 
@@ -25,9 +35,25 @@ const styles = StyleSheet.create({
     width: screen.width * 0.25,
     height: screen.width * 0.25,
   },
+  textHeader: {
+    color: colors.white,
+    fontWeight: "bold",
+    fontSize: 30,
+    marginVertical: 20,
+    textAlign: "center",
+  },
+  text: {
+    color: colors.white,
+    fontSize: 14,
+    textAlign: "center",
+  },
 });
 
 export default () => {
+  const baseCurrency = "USD";
+  const quoteCurrency = "GBP";
+  const conversionRate = 0.8345;
+  const date = new Date();
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
@@ -43,6 +69,29 @@ export default () => {
           resizeMode="contain"
         />
       </View>
+
+      <Text style={styles.textHeader}>Currency Converter</Text>
+
+      <ConversionInput
+        text={baseCurrency}
+        value="123"
+        onButtonPress={() => alert("todo!")}
+        onChangeText={(text) => console.log("text", text)}
+        keyboardType="numeric"
+      />
+      <ConversionInput
+        text={quoteCurrency}
+        value="123"
+        onButtonPress={() => alert("todo!")}
+        // keyboardType="numeric"
+        editable={false} //to disable the input field
+      />
+
+      <Text style={styles.text}>
+        {`1 ${baseCurrency} = ${conversionRate} ${quoteCurrency} as of ${format(date, "MMMM do, yyyy")}.`}
+      </Text>
+
+      <Button text="Reverse Currencies" onPress={() => alert("Todo!")} />
     </View>
   );
 };
