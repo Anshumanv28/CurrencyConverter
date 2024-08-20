@@ -8,6 +8,7 @@ import {
   ScrollView,
   Linking,
   Alert,
+  StatusBar,
 } from "react-native"; //named import
 import { Entypo } from "@expo/vector-icons";
 import colors from "../constants/colors";
@@ -45,6 +46,7 @@ export default () => {
 
     // works only for android yet will have to check and change for android
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <ScrollView>
         {/* <TouchableOpacity style={styles.row}>
         <Text style={styles.text}>Themes</Text>
