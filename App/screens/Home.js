@@ -11,11 +11,11 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+import { Entypo } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { format } from "date-fns";
 import { ConversionInput } from "../components/ConversionInput";
 import { Button } from "../components/Button";
-import { Entypo } from "@expo/vector-icons";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import colors from "../constants/colors";
 
@@ -98,7 +98,10 @@ export default ({ navigation }) => {
             text={baseCurrency}
             value="123"
             onButtonPress={() =>
-              navigation.push("CurrencyList", { title: "Base Currency" })
+              navigation.push("CurrencyList", {
+                title: "Base Currency",
+                activeCurrency: baseCurrency,
+              })
             }
             onChangeText={(text) => console.log("text", text)}
             keyboardType="numeric"
@@ -107,7 +110,10 @@ export default ({ navigation }) => {
             text={quoteCurrency}
             value="123"
             onButtonPress={() =>
-              navigation.push("CurrencyList", { title: "Quote Currency" })
+              navigation.push("CurrencyList", {
+                title: "Quote Currency",
+                activeCurrency: quoteCurrency,
+              })
             }
             // keyboardType="numeric"
             editable={false} //to disable the input field
