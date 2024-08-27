@@ -33,7 +33,12 @@ export default ({ navigation, route = {} }) => {
           return (
             <RowItem
               text={item}
-              onPress={() => navigation.pop()}
+              onPress={() => {
+                if (params.onChange) {
+                  params.onChange(item);
+                }
+                navigation.pop();
+              }}
               rightIcon={
                 selected && (
                   // eslint-disable-next-line react/jsx-wrap-multilines
