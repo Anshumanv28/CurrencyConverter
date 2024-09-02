@@ -65,6 +65,7 @@ const ModalStackScreen = () => (
 );
 
 export default () => (
+  //the call stack is Navigation -> ConversionContextProvider -> ModalStackScreen -> MainStackScreen
   <NavigationContainer>
     {/* <MainStackScreen /> */}
     <ConversionContextProvider>
